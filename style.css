@@ -47,6 +47,10 @@ body {
     gap: 2rem;
 }
 
+.navbar ul {
+    flex-direction: row; /* Asegúrate de que los elementos estén en fila */
+}
+
 .navbar a {
     font-size: var(--p-font);
     font-weight: 500;
@@ -65,7 +69,7 @@ body {
 }
 
 .menu-icon {
-    display: none;
+    display: none; /* Ocultar el ícono del menú en pantallas grandes */
     cursor: pointer;
     font-size: 1.5rem;
 }
@@ -365,16 +369,28 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .header {
-        padding: 1rem 3%;
+    .navbar ul {
+        display: none; /* Ocultar el menú por defecto en dispositivos móviles */
+        flex-direction: column; /* Cambiar a columna en móviles */
+        position: absolute; /* Posicionar el menú de forma absoluta */
+        top: 60px; /* Asegúrate de que esté debajo del encabezado */
+        left: 0;
+        background-color: var(--bg-color); /* Color de fondo del menú */
+        width: 100%; /* Ancho completo */
+        padding: 1rem 0; /* Espaciado interno */
+        z-index: 999; /* Asegúrate de que esté por encima de otros elementos */
     }
 
-    .navbar ul {
-        display: none;
+    .navbar ul.show {
+        display: flex; /* Mostrar el menú cuando se activa */
     }
 
     .menu-icon {
-        display: block;
+        display: block; /* Mostrar el ícono del menú en móviles */
+    }
+    
+    .header {
+        padding: 1rem 3%;
     }
 
     .descripcion {
